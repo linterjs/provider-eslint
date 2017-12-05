@@ -1,0 +1,19 @@
+{
+  "name": "@linter/eslint",
+  "version": "1.0.0-alpha.0",
+  "description": "Lint all the things... with one command",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linterjs/eslint.git"
+  },
+  "author": "Simon Fridlund <simon@fridlund.email>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/linterjs/eslint/issues"
+  },
+  "homepage": "https://github.com/linterjs/eslint#readme"
+}
