@@ -1,4 +1,9 @@
-import { registerLinter, LinterAdapter, LinterFactory, LintOutput } from "@linter/core";
+import {
+  registerLinter,
+  LinterAdapter,
+  LinterFactory,
+  LintOutput
+} from "@linter/core";
 import { CLIEngine } from "eslint";
 
 const adapter: LinterAdapter = {
@@ -9,7 +14,7 @@ const adapter: LinterAdapter = {
   lint({ filePath, text }) {
     // TOOD: Lint all the things...
     return {};
-  },
+  }
 };
 
 const linterFactory: LinterFactory = () => adapter;
