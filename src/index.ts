@@ -14,4 +14,8 @@ const adapter: LinterAdapter = {
 
 const linterFactory: LinterFactory = () => adapter;
 
-registerLinter("eslint", linterFactory);
+try {
+  registerLinter("eslint", linterFactory);
+} catch (error) {
+  console.error(error);
+}
