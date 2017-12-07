@@ -1,20 +1,10 @@
-import {
-  registerLinter,
-  LinterAdapter,
-  LinterFactory,
-  LintOutput
-} from "@linter/core";
-import { CLIEngine } from "eslint";
+import { registerLinter, LinterAdapter, LinterFactory } from "@linter/core";
+import { format } from "./format";
+import { lint } from "./lint";
 
 const adapter: LinterAdapter = {
-  format({ filePath, text }) {
-    // TODO: Format all the things...
-    return {};
-  },
-  lint({ filePath, text }) {
-    // TOOD: Lint all the things...
-    return {};
-  }
+  format,
+  lint
 };
 
 const linterFactory: LinterFactory = () => adapter;
