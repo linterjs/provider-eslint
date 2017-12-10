@@ -16,6 +16,9 @@
     "ts-node": "^3.3.0",
     "typescript": "^2.6.2"
   },
+  "engines": {
+    "node": ">=8.0.0"
+  },
   "homepage": "https://github.com/linterjs/eslint#readme",
   "license": "UNLICENSED",
   "main": "dist/index.js",
