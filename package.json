@@ -10,10 +10,11 @@
   },
   "description": "Lint all the things... with one command",
   "devDependencies": {
+    "@types/jest": "^21.1.8",
     "@types/node": "^8.0.55",
-    "tap-spec": "^4.1.1",
-    "tape": "^4.8.0",
-    "ts-node": "^3.3.0",
+    "jest": "^21.2.1",
+    "jest-cli": "^21.2.1",
+    "ts-jest": "^21.2.4",
     "typescript": "^2.6.2"
   },
   "engines": {
@@ -31,7 +32,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "test": "tape -r ts-node/register \"src/**/*.test.ts\" | tap-spec"
+    "test": "jest",
+    "test:verbose": "jest --verbose"
   },
   "types": "dist/index.d.ts",
   "version": "1.0.0-alpha.0"
