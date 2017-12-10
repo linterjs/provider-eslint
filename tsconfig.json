@@ -12,6 +12,12 @@
     "lib": ["es2017"],
     "noUnusedLocals": true
   },
-  "exclude": ["node_modules"],
+  "exclude": [
+    "**/__mock__",
+    "**/__snapshot__",
+    "**/__tests__",
+    "**/*.spec.*",
+    "**/*.test.*"
+  ],
   "include": ["src/**/*"]
 }
