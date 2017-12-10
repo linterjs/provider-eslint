@@ -12,5 +12,6 @@ const linterFactory: LinterFactory = () => adapter;
 try {
   registerLinter("eslint", linterFactory);
 } catch (error) {
+  // TODO: How should this be handled?
   console.error(error);
 }
