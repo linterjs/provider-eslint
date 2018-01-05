@@ -41,7 +41,7 @@
     "node": ">=8.0.0"
   },
   "homepage": "https://github.com/linterjs/eslint#readme",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "main": "dist/index.js",
   "name": "@linter/eslint",
   "optionalDependencies": {},
