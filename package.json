@@ -1,7 +1,7 @@
 {
   "author": "Simon Fridlund <simon@fridlund.email>",
   "bugs": {
-    "url": "https://github.com/linterjs/eslint/issues"
+    "url": "https://github.com/linterjs/provider-eslint/issues"
   },
   "dependencies": {
     "@linter/core": "^1.0.0-alpha.2",
@@ -18,10 +18,8 @@
     "babel-preset-env": "^1.6.1",
     "codeclimate-test-reporter": "^0.5.0",
     "codecov": "^3.0.0",
-    "fe.js": "^0.1.4",
     "jest": "^22.0.4",
     "jest-cli": "^22.0.4",
-    "jest-plugin-fs": "^2.6.0",
     "prettier": "^1.9.2",
     "rimraf": "^2.6.2",
     "ts-jest": "^22.0.0",
@@ -40,15 +38,15 @@
   "engines": {
     "node": ">=8.0.0"
   },
-  "homepage": "https://github.com/linterjs/eslint#readme",
+  "homepage": "https://github.com/linterjs/provider-eslint#readme",
   "license": "MIT",
   "main": "dist/index.js",
-  "name": "@linter/eslint",
+  "name": "@linter/provider-eslint",
   "optionalDependencies": {},
   "peerDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/linterjs/eslint.git"
+    "url": "git+https://github.com/linterjs/provider-eslint.git"
   },
   "scripts": {
     "clean": "rimraf coverage dist",
