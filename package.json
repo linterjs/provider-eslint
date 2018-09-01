@@ -4,7 +4,6 @@
     "url": "https://github.com/linterjs/provider-eslint/issues"
   },
   "dependencies": {
-    "eslint": "^4.14.0",
     "@linter/core": "^1.0.0-beta.1",
     "ajv": "^6.5.3",
     "common-tags": "^1.7.2",
@@ -46,7 +45,9 @@
   "main": "dist/index.js",
   "name": "@linter/provider-eslint",
   "optionalDependencies": {},
-  "peerDependencies": {},
+  "peerDependencies": {
+    "eslint": "^5.4.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/linterjs/provider-eslint.git"
