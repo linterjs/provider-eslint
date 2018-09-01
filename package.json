@@ -22,6 +22,7 @@
     "codecov": "^3.0.0",
     "jest": "^23.5.0",
     "jest-cli": "^23.5.0",
+    "npm-check": "^5.8.0",
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2",
     "ts-jest": "^23.1.4",
@@ -53,6 +54,7 @@
     "url": "git+https://github.com/linterjs/provider-eslint.git"
   },
   "scripts": {
+    "check": "npm-check",
     "clean": "rimraf coverage dist",
     "clean:build": "rimraf dist",
     "clean:test": "rimraf coverage",
