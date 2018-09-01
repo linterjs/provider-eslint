@@ -1,4 +1,5 @@
 import fs from "jest-plugin-fs";
+import { sep as separator } from "path";
 import { Linter, linterProvider, linterFactory } from "./linter";
 
 jest.mock("fs", () => {
@@ -52,10 +53,10 @@ describe("Format", () => {
     const linter = await linterProvider.linterFactory();
 
     expect(
-      linter.format({ filePath: "./foo.js", text: 'var bar = "baz"' }),
+      linter.format({ filePath: "foo.js", text: 'var bar = "baz"' }),
     ).toEqual({
       errorCount: 0,
-      filePath: `${process.cwd()}/foo.js`,
+      filePath: `${process.cwd() + separator}foo.js`,
       messages: [],
       output: "var bar = 'baz';",
       warningCount: 0,
@@ -128,7 +129,7 @@ describe("Lint", () => {
       linter.lint({ filePath: "foo.js", text: 'var bar = "baz"' }),
     ).toEqual({
       errorCount: 1,
-      filePath: `${process.cwd()}/foo.js`,
+      filePath: `${process.cwd() + separator}foo.js`,
       messages: [
         {
           column: 11,
