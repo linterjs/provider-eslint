@@ -4,14 +4,24 @@ import {
   LintOutput,
   LintSeverity,
 } from "@linter/core";
-import { ESLintMessage, ESLintReport, ESLintSeverity } from "./eslint";
+import {
+  ESLintMessage,
+  ESLintReport,
+  ESLintSeverity,
+  ESLintResult,
+} from "./eslint";
+import { logger } from "./logger";
 
-export function eslintReportToLintOutput({
-  errorCount,
-  results: [{ filePath, messages, output }],
-  warningCount,
-}: ESLintReport): LintOutput {
-  return {
+export function eslintReportToLintOutput(report: ESLintReport): LintOutput {
+  const {
+    errorCount,
+    results: [{ filePath, messages = [] } = {} as ESLintResult],
+    warningCount,
+  } = report;
+
+  logger.debug("ESLint report:", JSON.stringify(report, null, 2));
+
+  const lintOutput = {
     errorCount,
     ...(filePath && { filePath }),
     warningCount,
@@ -38,12 +48,23 @@ export function eslintReportToLintOutput({
       }),
     ),
   };
+
+  logger.debug("Mapping ESLint report to LintOutput");
+
+  return lintOutput;
 }
 
-export function eslintReportToFormatOutput(report): FormatOutput {
-  const { results: [{ output }] } = report;
-  return {
+export function eslintReportToFormatOutput(report: ESLintReport): FormatOutput {
+  const {
+    results: [{ output } = {} as ESLintResult],
+  } = report;
+
+  const formatOutput = {
     ...eslintReportToLintOutput(report),
     ...(output && { output }),
   };
+
+  logger.debug("Mapping ESLint report and LintOutput to FormatOutput");
+
+  return formatOutput;
 }
