@@ -27,16 +27,6 @@ Object {
 }
 `;
 
-exports[`Format with text and filePath 1`] = `
-Object {
-  "errorCount": 0,
-  "filePath": "/Users/zimme/Development/linter/provider-eslint/foo.js",
-  "messages": Array [],
-  "output": "var bar = 'baz';",
-  "warningCount": 0,
-}
-`;
-
 exports[`Lint with syntax error 1`] = `
 Object {
   "errorCount": 1,
