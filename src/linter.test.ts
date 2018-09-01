@@ -1,19 +1,89 @@
-import { Linter, linterProvider } from "./linter";
-import { LinterAdapter } from "@linter/core";
+import fs from "jest-plugin-fs";
+import { Linter, linterProvider, linterFactory } from "./linter";
 
-let linter: LinterAdapter;
+jest.mock("fs", () => {
+  const realFs = require.requireActual("fs");
+  const mockFs = require("jest-plugin-fs/mock");
+  const { ufs } = require("unionfs");
+  ufs.use(realFs).use(mockFs);
+  return ufs;
+});
+
+beforeAll(() => {
+  fs.root = process.cwd();
+});
+
+afterEach(() => {
+  fs.restore();
+  jest.resetModules();
+});
 
 test("Create linter", async () => {
-  linter = await linterProvider.linterFactory();
+  const linter = await linterProvider.linterFactory();
   expect(linter).toBeInstanceOf(Linter);
 });
 
 describe("Format", () => {
-  test("with text", () => {
+  test("with text", async () => {
+    fs.mock({
+      ".eslintrc": JSON.stringify({
+        rules: {
+          quotes: ["error", "single"],
+          semi: ["warn"],
+        },
+      }),
+    });
+
+    const linter = await linterProvider.linterFactory();
+
     expect(linter.format({ text: 'var foo = "bar"' })).toMatchSnapshot();
   });
 
-  test("with text and filePath", () => {
+  test("with text and filePath", async () => {
+    fs.mock({
+      ".eslintrc": JSON.stringify({
+        rules: {
+          quotes: ["error", "single"],
+          semi: ["warn"],
+        },
+      }),
+    });
+
+    const linter = await linterProvider.linterFactory();
+
+    expect(
+      linter.format({ filePath: "foo.js", text: 'var bar = "baz"' }),
+    ).toMatchSnapshot();
+  });
+
+  test("with already formatted text", async () => {
+    fs.mock({
+      ".eslintrc": JSON.stringify({
+        rules: {
+          quotes: ["error", "single"],
+          semi: ["warn"],
+        },
+      }),
+    });
+
+    const linter = await linterProvider.linterFactory();
+
+    expect(linter.format({ text: "var foo = 'bar';" })).toMatchSnapshot();
+  });
+
+  test("with ignored file", async () => {
+    fs.mock({
+      ".eslintrc": JSON.stringify({
+        rules: {
+          quotes: ["error", "single"],
+          semi: ["warn"],
+        },
+      }),
+      ".eslintignore": "foo.js",
+    });
+
+    const linter = await linterProvider.linterFactory();
+
     expect(
       linter.format({ filePath: "foo.js", text: 'var bar = "baz"' }),
     ).toMatchSnapshot();
@@ -21,11 +91,35 @@ describe("Format", () => {
 });
 
 describe("Lint", () => {
-  test("with text", () => {
+  test("with text", async () => {
+    fs.mock({
+      ".eslintrc": JSON.stringify({
+        rules: {
+          quotes: ["error", "single"],
+          semi: ["warn"],
+        },
+      }),
+      ".eslintignore": "foo.js",
+    });
+
+    const linter = await linterProvider.linterFactory();
+
     expect(linter.lint({ text: 'var foo = "bar"' })).toMatchSnapshot();
   });
 
-  test("with syntax error", () => {
+  test("with syntax error", async () => {
+    fs.mock({
+      ".eslintrc": JSON.stringify({
+        rules: {
+          quotes: ["error", "single"],
+          semi: ["warn"],
+        },
+      }),
+      ".eslintignore": "foo.js",
+    });
+
+    const linter = await linterProvider.linterFactory();
+
     expect(linter.lint({ text: 'var foo ==== "bar"' })).toMatchSnapshot();
   });
 });

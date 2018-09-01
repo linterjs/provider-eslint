@@ -1,5 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Format with already formatted text 1`] = `
+Object {
+  "errorCount": 0,
+  "filePath": "<text>",
+  "messages": Array [],
+  "warningCount": 0,
+}
+`;
+
+exports[`Format with ignored file 1`] = `
+Object {
+  "errorCount": 0,
+  "messages": Array [],
+  "warningCount": 0,
+}
+`;
+
 exports[`Format with text 1`] = `
 Object {
   "errorCount": 0,
@@ -13,7 +30,7 @@ Object {
 exports[`Format with text and filePath 1`] = `
 Object {
   "errorCount": 0,
-  "filePath": "/Users/zimme/Development/linter/eslint/foo.js",
+  "filePath": "/Users/zimme/Development/linter/provider-eslint/foo.js",
   "messages": Array [],
   "output": "var bar = 'baz';",
   "warningCount": 0,

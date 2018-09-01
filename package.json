@@ -22,6 +22,8 @@
     "codecov": "^3.0.0",
     "jest": "^23.5.0",
     "jest-cli": "^23.5.0",
+    "jest-plugin-fs": "^2.6.0",
+    "jest-plugins": "^2.6.0",
     "npm-check": "^5.8.0",
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2",
@@ -37,6 +39,7 @@
     "tslint-plugin-prettier": "^1.3.0",
     "tslint-strict-null-checks": "^1.0.0",
     "typescript": "^3.0.3",
+    "unionfs": "^3.0.2"
   },
   "engines": {
     "node": ">=8.0.0"
