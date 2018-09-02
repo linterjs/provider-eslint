@@ -4,7 +4,7 @@
     "url": "https://github.com/linterjs/provider-eslint/issues"
   },
   "dependencies": {
-    "@linter/core": "^1.0.0-beta.1",
+    "@linter/core": "^1.0.0-beta.3",
     "ajv": "^6.5.3",
     "common-tags": "^1.7.2",
     "loglevel-colored-level-prefix": "^1.0.0",
