@@ -1,6 +1,6 @@
 import fs from "jest-plugin-fs";
 import { sep as separator } from "path";
-import { Linter, linterProvider, linterFactory } from "./linter";
+import { Linter, linterFactory } from "./linter";
 
 jest.mock("fs", () => {
   const realFs = require.requireActual("fs");
@@ -20,7 +20,7 @@ afterEach(() => {
 });
 
 test("Create linter", async () => {
-  const linter = await linterProvider.linterFactory();
+  const linter = await linterFactory();
   expect(linter).toBeInstanceOf(Linter);
 });
 
@@ -35,7 +35,7 @@ describe("Format", () => {
       }),
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(linter.format({ text: 'var foo = "bar"' })).toMatchSnapshot();
   });
@@ -50,7 +50,7 @@ describe("Format", () => {
       }),
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(
       linter.format({ filePath: "foo.js", text: 'var bar = "baz"' }),
@@ -73,7 +73,7 @@ describe("Format", () => {
       }),
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(linter.format({ text: "var foo = 'bar';" })).toMatchSnapshot();
   });
@@ -89,7 +89,7 @@ describe("Format", () => {
       ".eslintignore": "foo.js",
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(
       linter.format({ filePath: "foo.js", text: 'var bar = "baz"' }),
@@ -108,7 +108,7 @@ describe("Lint", () => {
       }),
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(linter.lint({ text: 'var foo = "bar"' })).toMatchSnapshot();
   });
@@ -123,7 +123,7 @@ describe("Lint", () => {
       }),
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(
       linter.lint({ filePath: "foo.js", text: 'var bar = "baz"' }),
@@ -162,7 +162,7 @@ describe("Lint", () => {
       }),
     });
 
-    const linter = await linterProvider.linterFactory();
+    const linter = await linterFactory();
 
     expect(linter.lint({ text: 'var foo ==== "bar"' })).toMatchSnapshot();
   });
