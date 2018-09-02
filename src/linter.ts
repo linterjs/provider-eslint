@@ -11,7 +11,7 @@ import { CLIEngine } from "eslint";
 import { getLogLevel, logger } from "./logger";
 import { eslintReportToFormatOutput, eslintReportToLintOutput } from "./utils";
 
-export class Linter implements LinterAdapter {
+class Linter implements LinterAdapter {
   private cliEngine = new CLIEngine({
     fix: () => this.fix,
   });
@@ -57,9 +57,11 @@ export class Linter implements LinterAdapter {
   }
 }
 
-export const linterFactory: LinterFactory = () => new Linter();
+const linterFactory: LinterFactory = () => new Linter();
 
-export const linterProvider: LinterProvider = {
-  linterFactory,
+const linterProvider: LinterProvider = {
+  factory: linterFactory,
   name: "eslint",
 };
+
+export { Linter, linterFactory, linterProvider };
