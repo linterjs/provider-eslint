@@ -1,1 +1,1 @@
-export { Linter as default, linterFactory, linterProvider } from "./linter";
+export { Linter, linterFactory, linterProvider as default } from "./linter";
