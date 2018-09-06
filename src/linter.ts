@@ -62,6 +62,7 @@ const linterFactory: LinterFactory = () => new Linter();
 const linterProvider: LinterProvider = {
   factory: linterFactory,
   name: "eslint",
+  supportedExtensions: ["js", "jsx"],
 };
 
 export { Linter, linterFactory, linterProvider };
