@@ -12,7 +12,7 @@ import {
 } from "./eslint";
 import { logger } from "./logger";
 
-export function eslintReportToLintOutput(report: ESLintReport): LintOutput {
+function eslintReportToLintOutput(report: ESLintReport): LintOutput {
   const {
     errorCount,
     results: [{ filePath, messages = [] } = {} as ESLintResult],
@@ -54,7 +54,7 @@ export function eslintReportToLintOutput(report: ESLintReport): LintOutput {
   return lintOutput;
 }
 
-export function eslintReportToFormatOutput(report: ESLintReport): FormatOutput {
+function eslintReportToFormatOutput(report: ESLintReport): FormatOutput {
   const {
     results: [{ output } = {} as ESLintResult],
   } = report;
@@ -68,3 +68,5 @@ export function eslintReportToFormatOutput(report: ESLintReport): FormatOutput {
 
   return formatOutput;
 }
+
+export { eslintReportToFormatOutput, eslintReportToLintOutput };
