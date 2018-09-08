@@ -62,7 +62,12 @@ describe("Format", () => {
 
     expect(
       linter.format({ filePath: "foo.js", text: "var foo = 'bar';" }),
-    ).toMatchSnapshot();
+    ).toEqual({
+      errorCount: 0,
+      filePath: `${process.cwd() + separator}foo.js`,
+      messages: [],
+      warningCount: 0,
+    });
   });
 
   test("with ignored file", async () => {
@@ -138,6 +143,19 @@ describe("Lint", () => {
 
     expect(
       linter.lint({ filePath: "foo.js", text: 'var foo ==== "bar"' }),
-    ).toMatchSnapshot();
+    ).toEqual({
+      errorCount: 1,
+      filePath: `${process.cwd() + separator}foo.js`,
+      messages: [
+        {
+          column: 9,
+          line: 1,
+          message: "Parsing error: Unexpected token ===",
+          ruleId: "parser",
+          severity: 2,
+        },
+      ],
+      warningCount: 0,
+    });
   });
 });
