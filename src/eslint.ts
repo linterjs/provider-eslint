@@ -1,9 +1,9 @@
-export const enum ESLintSeverity {
+const enum ESLintSeverity {
   WARNING = 1,
   ERROR = 2,
 }
 
-export interface ESLintMessageBase {
+interface ESLintMessageBase {
   column: number;
   endColumn?: number;
   endLine?: number;
@@ -16,19 +16,19 @@ export interface ESLintMessageBase {
   severity: ESLintSeverity;
 }
 
-export interface ESLintMessageFatal extends ESLintMessageBase {
+interface ESLintMessageFatal extends ESLintMessageBase {
   fatal: true;
   ruleId: null;
 }
 
-export interface ESLintMessageNonFatal extends ESLintMessageBase {
+interface ESLintMessageNonFatal extends ESLintMessageBase {
   fatal: false;
   ruleId?: string;
 }
 
-export type ESLintMessage = ESLintMessageFatal | ESLintMessageNonFatal;
+type ESLintMessage = ESLintMessageFatal | ESLintMessageNonFatal;
 
-export interface ESLintResult {
+interface ESLintResult {
   errorCount: number;
   filePath: string;
   fixableErrorCount: number;
@@ -39,10 +39,20 @@ export interface ESLintResult {
   warningCount: number;
 }
 
-export interface ESLintReport {
+interface ESLintReport {
   errorCount: number;
   fixableErrorCount: number;
   fixableWarningCount: number;
   results: ESLintResult[];
   warningCount: number;
 }
+
+export {
+  ESLintMessage,
+  ESLintMessageBase,
+  ESLintMessageFatal,
+  ESLintMessageNonFatal,
+  ESLintReport,
+  ESLintResult,
+  ESLintSeverity,
+};
