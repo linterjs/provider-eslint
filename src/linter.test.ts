@@ -25,24 +25,9 @@ test("Create linter", async () => {
 });
 
 describe("Format", () => {
-  test("with text", async () => {
-    fs.mock({
-      ".eslintrc": JSON.stringify({
-        rules: {
-          quotes: ["error", "single"],
-          semi: ["warn"],
-        },
-      }),
-    });
-
-    const linter = await linterFactory();
-
-    expect(linter.format({ text: 'var foo = "bar"' })).toMatchSnapshot();
-  });
-
   test("with text and filePath", async () => {
     fs.mock({
-      ".eslintrc": JSON.stringify({
+      ".eslintrc.json": JSON.stringify({
         rules: {
           quotes: ["error", "single"],
           semi: ["warn"],
@@ -65,7 +50,7 @@ describe("Format", () => {
 
   test("with already formatted text", async () => {
     fs.mock({
-      ".eslintrc": JSON.stringify({
+      ".eslintrc.json": JSON.stringify({
         rules: {
           quotes: ["error", "single"],
           semi: ["warn"],
@@ -75,12 +60,14 @@ describe("Format", () => {
 
     const linter = await linterFactory();
 
-    expect(linter.format({ text: "var foo = 'bar';" })).toMatchSnapshot();
+    expect(
+      linter.format({ filePath: "foo.js", text: "var foo = 'bar';" }),
+    ).toMatchSnapshot();
   });
 
   test("with ignored file", async () => {
     fs.mock({
-      ".eslintrc": JSON.stringify({
+      ".eslintrc.json": JSON.stringify({
         rules: {
           quotes: ["error", "single"],
           semi: ["warn"],
@@ -98,24 +85,9 @@ describe("Format", () => {
 });
 
 describe("Lint", () => {
-  test("with text", async () => {
-    fs.mock({
-      ".eslintrc": JSON.stringify({
-        rules: {
-          quotes: ["error", "single"],
-          semi: ["warn"],
-        },
-      }),
-    });
-
-    const linter = await linterFactory();
-
-    expect(linter.lint({ text: 'var foo = "bar"' })).toMatchSnapshot();
-  });
-
   test("with text and filePath", async () => {
     fs.mock({
-      ".eslintrc": JSON.stringify({
+      ".eslintrc.json": JSON.stringify({
         rules: {
           quotes: ["error", "single"],
           semi: ["warn"],
@@ -154,7 +126,7 @@ describe("Lint", () => {
 
   test("with syntax error", async () => {
     fs.mock({
-      ".eslintrc": JSON.stringify({
+      ".eslintrc.json": JSON.stringify({
         rules: {
           quotes: ["error", "single"],
           semi: ["warn"],
@@ -164,6 +136,8 @@ describe("Lint", () => {
 
     const linter = await linterFactory();
 
-    expect(linter.lint({ text: 'var foo ==== "bar"' })).toMatchSnapshot();
+    expect(
+      linter.lint({ filePath: "foo.js", text: 'var foo ==== "bar"' }),
+    ).toMatchSnapshot();
   });
 });

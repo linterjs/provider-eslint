@@ -3,7 +3,7 @@
 exports[`Format with already formatted text 1`] = `
 Object {
   "errorCount": 0,
-  "filePath": "<text>",
+  "filePath": "/Users/zimme/Development/linter/provider-eslint/foo.js",
   "messages": Array [],
   "warningCount": 0,
 }
@@ -17,20 +17,10 @@ Object {
 }
 `;
 
-exports[`Format with text 1`] = `
-Object {
-  "errorCount": 0,
-  "filePath": "<text>",
-  "messages": Array [],
-  "output": "var foo = 'bar';",
-  "warningCount": 0,
-}
-`;
-
 exports[`Lint with syntax error 1`] = `
 Object {
   "errorCount": 1,
-  "filePath": "<text>",
+  "filePath": "/Users/zimme/Development/linter/provider-eslint/foo.js",
   "messages": Array [
     Object {
       "column": 9,
@@ -41,31 +31,5 @@ Object {
     },
   ],
   "warningCount": 0,
-}
-`;
-
-exports[`Lint with text 1`] = `
-Object {
-  "errorCount": 1,
-  "filePath": "<text>",
-  "messages": Array [
-    Object {
-      "column": 11,
-      "endColumn": 16,
-      "endLine": 1,
-      "line": 1,
-      "message": "Strings must use singlequote.",
-      "ruleId": "quotes",
-      "severity": 2,
-    },
-    Object {
-      "column": 16,
-      "line": 1,
-      "message": "Missing semicolon.",
-      "ruleId": "semi",
-      "severity": 1,
-    },
-  ],
-  "warningCount": 1,
 }
 `;
