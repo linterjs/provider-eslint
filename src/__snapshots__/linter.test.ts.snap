@@ -1,35 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Format with already formatted text 1`] = `
-Object {
-  "errorCount": 0,
-  "filePath": "/Users/zimme/Development/linter/provider-eslint/foo.js",
-  "messages": Array [],
-  "warningCount": 0,
-}
-`;
-
 exports[`Format with ignored file 1`] = `
 Object {
   "errorCount": 0,
   "messages": Array [],
-  "warningCount": 0,
-}
-`;
-
-exports[`Lint with syntax error 1`] = `
-Object {
-  "errorCount": 1,
-  "filePath": "/Users/zimme/Development/linter/provider-eslint/foo.js",
-  "messages": Array [
-    Object {
-      "column": 9,
-      "line": 1,
-      "message": "Parsing error: Unexpected token ===",
-      "ruleId": "parser",
-      "severity": 2,
-    },
-  ],
   "warningCount": 0,
 }
 `;
