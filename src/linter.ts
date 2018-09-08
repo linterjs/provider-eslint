@@ -27,7 +27,7 @@ class Linter implements LinterAdapter {
 
   public format({ filePath, text }: FormatInput): FormatOutput {
     logger.debug("Running format");
-    filePath && logger.debug(`filePath: ${filePath}`);
+    logger.debug(`filePath: ${filePath}`);
     logger.debug(`text: ${text}`);
     logger.debug('Setting fix to "true"');
     this.fix = true;
@@ -45,7 +45,7 @@ class Linter implements LinterAdapter {
 
   public lint({ filePath, text }: LintInput): LintOutput {
     logger.debug("Running lint");
-    filePath && logger.debug(`filePath: ${filePath}`);
+    logger.debug(`filePath: ${filePath}`);
     logger.debug(`text: ${text}`);
 
     logger.debug("Running ESLint");
