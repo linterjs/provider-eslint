@@ -52,7 +52,7 @@ class Linter implements LinterAdapter {
     const report = this.cliEngine.executeOnText(text, filePath);
 
     const lintOutput = eslintReportToLintOutput(report);
-    logger.debug("Format done");
+    logger.debug("Lint done");
     return lintOutput;
   }
 }
